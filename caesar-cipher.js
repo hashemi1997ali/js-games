@@ -1,6 +1,12 @@
 const playerSentence = process.argv[2];
 const shift = parseInt(process.argv[3]);
 
+if (!playerSentence || isNaN(shift)) {
+  console.log("Please provide a sentence and a valid shift value.");
+} else {
+  console.log(caesarCipher(playerSentence, shift));
+}
+
 function caesarCipher(sentence, shift) {
   const normalizedShift = ((shift % 26) + 26) % 26;
 
@@ -21,5 +27,3 @@ function caesarCipher(sentence, shift) {
     })
     .join("");
 }
-
-console.log(caesarCipher(playerSentence, shift));

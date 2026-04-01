@@ -1,12 +1,20 @@
 const vowels = ["a", "e", "i", "o", "u"];
 const playerSentence = process.argv[2].toLowerCase();
 
+if (!playerSentence) {
+  console.log("Please provide a sentence to translate.");
+} else {
+  console.log(translateToPigLatin(playerSentence));
+}
+
 function translateToPigLatin(sentence) {
   return sentence
     .split(" ")
     .map((word) => {
+      let result;
+
       if (vowels.includes(word[0])) {
-        return word + "way";
+        result = word + "way";
       } else {
         const firstVowelIndex = word
           .split("")
@@ -15,17 +23,13 @@ function translateToPigLatin(sentence) {
         if (firstVowelIndex !== -1) {
           const consonantCluster = word.slice(0, firstVowelIndex);
           const restOfWord = word.slice(firstVowelIndex);
-          return restOfWord + consonantCluster + "ay";
+          result = restOfWord + consonantCluster + "ay";
         } else {
-          return word + "ay";
+          result = word + "ay";
         }
       }
+
+      return result.charAt(0).toUpperCase() + result.slice(1);
     })
     .join(" ");
 }
-
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-console.log(capitalize(translateToPigLatin(playerSentence)));
