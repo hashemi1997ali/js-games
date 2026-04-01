@@ -11,9 +11,6 @@ if (!choices.includes(playerChoice)) {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection;
-  computerSelection = computerSelection;
-
   if (playerSelection === computerSelection) return "It's a tie!";
 
   if (
