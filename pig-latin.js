@@ -1,5 +1,5 @@
 const vowels = ["a", "e", "i", "o", "u"];
-const playerSentence = process.argv[2];
+const playerSentence = process.argv[2].toLowerCase();
 
 function translateToPigLatin(sentence) {
   return sentence
@@ -11,6 +11,7 @@ function translateToPigLatin(sentence) {
         const firstVowelIndex = word
           .split("")
           .findIndex((char) => vowels.includes(char));
+
         if (firstVowelIndex !== -1) {
           const consonantCluster = word.slice(0, firstVowelIndex);
           const restOfWord = word.slice(firstVowelIndex);
@@ -23,4 +24,8 @@ function translateToPigLatin(sentence) {
     .join(" ");
 }
 
-console.log(translateToPigLatin(playerSentence));
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+console.log(capitalize(translateToPigLatin(playerSentence)));

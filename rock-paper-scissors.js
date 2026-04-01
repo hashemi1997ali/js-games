@@ -1,5 +1,5 @@
 const choices = ["rock", "paper", "scissors"];
-const playerChoice = process.argv.slice(2)[0].toLowerCase();
+const playerChoice = process.argv[2].toLowerCase();
 const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
 if (!choices.includes(playerChoice)) {
