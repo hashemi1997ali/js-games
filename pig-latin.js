@@ -11,10 +11,8 @@ function translateToPigLatin(sentence) {
   return sentence
     .split(" ")
     .map((word) => {
-      let result;
-
       if (vowels.includes(word[0])) {
-        result = word + "way";
+        return word + "way";
       } else {
         const firstVowelIndex = word
           .split("")
@@ -23,13 +21,11 @@ function translateToPigLatin(sentence) {
         if (firstVowelIndex !== -1) {
           const consonantCluster = word.slice(0, firstVowelIndex);
           const restOfWord = word.slice(firstVowelIndex);
-          result = restOfWord + consonantCluster + "ay";
+          return restOfWord + consonantCluster + "ay";
         } else {
-          result = word + "ay";
+          return word + "ay";
         }
       }
-
-      return result.charAt(0).toUpperCase() + result.slice(1);
     })
     .join(" ");
 }
